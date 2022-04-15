@@ -1,10 +1,8 @@
 # web_app/routes/weather_routes.py
 
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template, redirect, flash # FYI new imports
 
 from app.weather_service import get_hourly_forecasts
-
-from flask import Blueprint, request, jsonify, render_template, redirect, flash # FYI new imports
 
 weather_routes = Blueprint("weather_routes", __name__)
 
@@ -49,5 +47,5 @@ def weather_forecast():
         #flash("Weather Forecast Generated Successfully!", "success")
         return render_template("weather_forecast.html", country_code=country_code, zip_code=zip_code, results=results)
     else:
-        #flash("Geography Error. Please try again!", "danger")
+        #flash("Geograpßhy Error. Please try again!", "danger")
         return redirect("/weather/form")
