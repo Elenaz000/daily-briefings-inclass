@@ -9,11 +9,8 @@ from web_app.routes.weather_routes import weather_routes
 
 load_dotenv()
 
-SECRET_KEY = os.getenv("SECRET_KEY", default="super secret")
-
 def create_app():
     app = Flask(__name__)
-    app.config["SECRET_KEY"] = SECRET_KEY
     app.register_blueprint(home_routes)
     app.register_blueprint(book_routes)
     app.register_blueprint(weather_routes)
