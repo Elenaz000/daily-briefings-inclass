@@ -27,9 +27,6 @@ def another():
 @home_routes.route("/hello")
 def hello_world():
     print("HELLO...", dict(request.args))
-
-    url_params = dict(request.args)
-    print("URL PARAMS:", url_params)
     
     #go check the url params for one called "name", and use it if possible 
     #if there is no name parameter is specified, use a default value 
