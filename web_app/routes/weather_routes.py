@@ -11,7 +11,7 @@ def weather_forecast_api():
     print("WEATHER FORECAST (API)...")
     print("URL PARAMS:", dict(request.args))
 
-    #country_code = request.args["country_code"] the dict might not have the key all the time 
+    #country_code = request.args["country_code"] # the dict might not have this key all the time
     country_code = request.args.get("country_code") or "US"
     zip_code = request.args.get("zip_code") or "20057"
 
@@ -20,8 +20,6 @@ def weather_forecast_api():
         return jsonify(results)
     else:
         return jsonify({"message":"Invalid Geography. Please try again."}), 404
-
-
 
 @weather_routes.route("/weather/form")
 def weather_form():
@@ -47,5 +45,5 @@ def weather_forecast():
         #flash("Weather Forecast Generated Successfully!", "success")
         return render_template("weather_forecast.html", country_code=country_code, zip_code=zip_code, results=results)
     else:
-        #flash("Geograpßhy Error. Please try again!", "danger")
+        #flash("Geography Error. Please try again!", "danger")
         return redirect("/weather/form")
